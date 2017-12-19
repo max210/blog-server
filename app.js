@@ -4,9 +4,10 @@ let favicon = require('serve-favicon')
 let logger = require('morgan')
 let cookieParser = require('cookie-parser')
 let bodyParser = require('body-parser')
+require('./models/init')
 
-let index = require('./routes/index')
-let users = require('./routes/users')
+let post = require('./routes/post')
+let admin = require('./routes/admin')
 
 let app = express()
 
@@ -22,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use('/', index)
-app.use('/users', users)
+app.use('/post', post)
+app.use('/admin', admin)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
