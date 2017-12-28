@@ -1,6 +1,7 @@
 let mongoose = require('mongoose')
+let config = require('../config')
 
-mongoose.connect('mongodb://192.168.99.100:32788/blog', {
+mongoose.connect(config.mongoUrl, {
   useMongoClient: true
 })
 mongoose.connection.on('connected', (req, res) => {
